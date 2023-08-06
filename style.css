@@ -1,0 +1,61 @@
+body{
+    /* overflow: hidden; */
+}
+.cbox{
+    height: 600px;
+    width: 380px;
+    background-color: rgb(43, 41, 41);
+    margin: auto;
+    margin-top: 80px;
+    border: 10px solid rgb(80, 73, 73);
+}
+.result{
+    height: 75px;
+    position: absolute;
+    margin-top: 170px;
+    font-size: 70px;
+    color: white;
+    margin-left: 10px;
+}
+.icons{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    color: white;
+    font-size: 40px;
+    padding: 20px;
+    text-align: center;
+    grid-gap: 20px;
+    position: absolute;
+    margin-top: 240px;
+    width: 340px;
+    grid-column-start: 1;
+    grid-row-end: 3;
+}
+#color{
+    background-color: orange;
+    cursor: pointer;
+    border: 1px solid orange;
+    box-shadow: 0px 0px 5px 1px white;
+}
+#equals{
+    background-color: rgb(242, 129, 8);
+    cursor: pointer;
+}
+#dcolor,#number{
+    background-color: gray;
+    cursor: pointer;
+    border: 1px solid gray;
+    box-shadow: 0px 0px 5px 1px white;
+}
+#d1color{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background-color: rgb(72, 63, 63);
+    cursor: pointer;
+}
+button{
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+    body{
+        /* overflow: hidden; */
+    }
+    .cbox{
+        height: 600px;
+        width: 380px;
+        background-color: rgb(43, 41, 41);
+        margin: auto;
+        margin-top: 80px;
+        border: 10px solid rgb(80, 73, 73);
+    }
+    .result{
+        height: 75px;
+        position: absolute;
+        margin-top: 170px;
+        font-size: 70px;
+        color: white;
+        margin-left: 10px;
+    }
+    .icons{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        color: white;
+        font-size: 40px;
+        padding: 20px;
+        text-align: center;
+        grid-gap: 20px;
+        position: absolute;
+        margin-top: 240px;
+        width: 340px;
+        grid-column-start: 1;
+        grid-row-end: 3;
+    }
+    #color{
+        background-color: orange;
+        cursor: pointer;
+        border: 1px solid orange;
+        box-shadow: 0px 0px 5px 1px white;
+    }
+    #equals{
+        background-color: rgb(242, 129, 8);
+        cursor: pointer;
+    }
+    #dcolor,#number{
+        background-color: gray;
+        cursor: pointer;
+        border: 1px solid gray;
+        box-shadow: 0px 0px 5px 1px white;
+    }
+    #d1color{
+        grid-column-start: 1;
+        grid-column-end: 3;
+        background-color: rgb(72, 63, 63);
+        cursor: pointer;
+    }
+    button{
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+    }
+    
+    
+</style>
+<body>
+    <link rel="stylesheet" href="style.css">
+    <div class="cbox">
+        <div class="icons">
+            <div class="item" id="d1color" onclick="clearResult()">Clear</div>
+            <div class="item" id="color" onclick="operate(this)">%</div>
+            <div class="item" id="color" onclick="operate(this)">/</div>
+            <button class="item" id="number" value="7" onclick="show(this)">7</button>
+            <button class="item" id="number" value="8" onclick="show(this)">8</button>
+            <button class="item" id="number" value="9" onclick="show(this)">9</button>
+            <div class="item" id="color" onclick="operate(this)">*</div>
+            <button class="item" id="number" value="4" onclick="show(this)">4</button>
+            <button class="item" id="number" value="5" onclick="show(this)">5</button>
+            <button class="item" id="number" value="6" onclick="show(this)">6</button>
+            <div class="item" id="color" onclick="operate(this)">-</div>
+            <button class="item" id="number" value="1" onclick="show(this)">1</button>
+            <button class="item" id="number" value="2" onclick="show(this)">2</button>
+            <button class="item" id="number" value="3" onclick="show(this)">3</button>
+            <div class="item" id="color" onclick="operate(this)">+</div>
+            <button class="item" id="number" value="0" onclick="show(this)">0</button>
+            <div class="item" id="dcolor">.</div>
+            <div class="item" id="color" onclick="operate(this)">^</div>
+            <div class="item" id="equals" onclick="equalto()">=</div>
+        </div>
+        <div class="result" id="res"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        const res = document.getElementById("res");
+let operand="";
+function show(button) {
+    res.innerText+=button.value;
+    calculation(res.innerText);
+}
+const clearResult=()=>
+{
+    res.innerText="";
+}
+function operate(button)
+{
+    res.innerText+=button.innerText;
+    operand=button.innerText;
+    calculation(res.innerText);
+}
+function equalto() {
+    let result = calculation(res.innerText);
+    console.log(result);
+    let r = "";
+    let i = 0;
+    for (i = 0; i < result.length; i++) {
+        let ch = result.charAt(i);
+        if (ch != '+' && ch != '-' && ch != '*' && ch != '^' && ch != '%' && ch != '/') {
+            r += ch;
+        } else {
+            break;
+        }
+    }
+    let fh =(r);
+    let sh = (result.slice(i + 1));
+    console.log(fh, sh);
+    if (result[i] == '+') {
+        res.innerText = Number(fh) + Number(sh);
+    }
+    else if (result[i] == '-') {
+        res.innerText = Number(fh) - Number(sh);
+    }
+    if (result[i] == '*') {
+        res.innerText = Number(fh) * Number(sh);
+    }
+    if (result[i] == '/') {
+        res.innerText = Number(fh) / Number(sh);
+    }
+    if (result[i] == '^') {
+        res.innerText = Math.pow(Number(fh),Number(sh));
+    }
+    if (result[i] == '%') {
+        res.innerText = Number(fh) % Number(sh);
+    }
+}
+
+function calculation(res){
+    let result=res;
+    return result;
+}
+    </script>
+</body>
+</html>
